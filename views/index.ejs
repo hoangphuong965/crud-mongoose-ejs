@@ -1,0 +1,38 @@
+<%- include("components/navbar") -%>
+<body>
+  <div class="container mt-5">
+    <h1>Employee Database System</h1>
+    <table
+      id="example"
+      class="table table-striped table-bordered"
+      style="width: 100%"
+    >
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% employess.forEach(employee => { %>
+        <tr>
+          <td><%= employee.firstname %></td>
+          <td><%= employee.lastname %></td>
+          <td><%= employee.email %></td>
+          <td style="cursor: pointer">
+            <a href="/employee/update/<%= employee.id %>">update</a> |
+            <a
+              href="/employee/delete/<%= employee.id %>"
+              onclick="return confirm('Are you sure delete this user?')"
+              >delete</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+<%- include("components/footer") -%>
